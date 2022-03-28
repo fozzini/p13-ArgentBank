@@ -7,6 +7,9 @@
   format('truetype')
 }
 
+.errorFont{
+color:#fff;
+}
 
 html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -81,7 +84,7 @@ body {
 }
 
 .hero {
-  background-image: url('../img/bank-tree.jpeg');
+  background-image: url('../assets/bankTree.jpeg');
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
