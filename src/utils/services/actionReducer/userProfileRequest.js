@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { postProfile } from '../fetch/fetch';
-import { promiseStatus } from "../selectors/selectors";
+// import { promiseStatus } from "../selectors/selectors";
 import { userData } from "./UserReducer";
 
 const initialState = {
@@ -17,18 +17,18 @@ const { actions, reducer } = createSlice({
       reducer: (draft) => {
         if (draft.status === "void") {
           draft.status = "pending";
-          return;
+          // return;
         }
         if (draft.status === "rejected") {
           draft.error = null;
           draft.status = "pending";
-          return;
+          // return;
         }
         if (draft.status === "resolved") {
           draft.status = "updating";
-          return;
+          // return;
         }
-        return;
+        // return;
       },
     },
     resolved: {
@@ -36,9 +36,9 @@ const { actions, reducer } = createSlice({
         if (draft.status === "pending" || draft.status === "updating") {
           draft.data = action.payload;
           draft.status = "resolved";
-          return;
+          // return;
         }
-        return;
+        // return;
       },
     },
     rejected: {
@@ -47,9 +47,9 @@ const { actions, reducer } = createSlice({
           draft.error = action.payload;
           draft.data = null;
           draft.status = "rejected";
-          return;
+          // return;
         }
-        return;
+        // return;
       },
     },
   },
@@ -58,15 +58,15 @@ const { actions, reducer } = createSlice({
 
 export const accessProfile = () => 
   async (dispatch, getState) => {
-    const status = promiseStatus(getState(), "profile");
+    // const status = promiseStatus(getState(), "profile");
     const token = getState().user.token;
 
-    if (status === "pending" || status === "updating") {
-      return;
-    }
+    // if (status === "pending" || status === "updating") {
+      // return;
+    // }
 
     dispatch(actions.fetch());
-
+   
     try {
       const data = await postProfile("/user/profile", {}, token);
       if (data.status !== 200) {
