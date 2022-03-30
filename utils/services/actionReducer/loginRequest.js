@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {postLogin} from "../fetch/fetch"
 import { promiseStatus } from "../utils/selectors/selectors";
-import {login} from "../features/user";
+import { login } from "../actionReducer/UserReducer"
 
 
 const initialState = {

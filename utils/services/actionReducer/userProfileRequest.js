@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import putProfile from '../fetch';
-import { modifiedUser } from "./UserReducer";
+import { postProfile } from '../fetch';
 import { promiseStatus } from "../utils/selectors/selectors";
+import { userData } from "./UserReducer";
 
 const initialState = {
   status: "void",
@@ -9,12 +9,13 @@ const initialState = {
   error: null,
 };
 
-const {actions, reducer} = createSlice({
-  name : "edition",
+
+const { actions, reducer } = createSlice({
+  name: "profile",
   initialState,
-  reducers : {
-    fetch : {
-      reducer : (draft) => {
+  reducers: {
+    fetch: {
+      reducer: (draft) => {
         if (draft.status === "void") {
           draft.status = "pending";
           return;
@@ -29,20 +30,20 @@ const {actions, reducer} = createSlice({
           return;
         }
         return;
-      }
+      },
     },
-    resolved : {
-      reducer : (draft, action) => {
+    resolved: {
+      reducer: (draft, action) => {
         if (draft.status === "pending" || draft.status === "updating") {
           draft.data = action.payload;
           draft.status = "resolved";
           return;
         }
         return;
-      }
+      },
     },
-    rejected : {
-      reducer : (draft, action) => {
+    rejected: {
+      reducer: (draft, action) => {
         if (draft.status === "pending" || draft.status === "updating") {
           draft.error = action.payload;
           draft.data = null;
@@ -50,15 +51,15 @@ const {actions, reducer} = createSlice({
           return;
         }
         return;
-      }
+      },
     },
-  }
-})
+  },
+});
 
 
-export const editProfile = (body) => {
+export function accessProfile() {
   return async (dispatch, getState) => {
-    const status = promiseStatus(getState(), "modify");
+    const status = promiseStatus(getState(), "profile");
     const token = getState().user.token;
 
     if (status === "pending" || status === "updating") {
@@ -68,15 +69,17 @@ export const editProfile = (body) => {
     dispatch(actions.fetch());
 
     try {
-      const data = await putProfile("/user/profile",body, token);
+      const data = await postProfile("/user/profile", {}, token);
       if (data.status !== 200) {
-        throw new Error(data.message);
+        throw new Error("Failed request");
       } else {
         dispatch(actions.resolved(data));
-        dispatch(modifiedUser(data.body))
+        const firstname = data.body.firstName;
+        const lastname = data.body.lastName;
+        dispatch(userData(firstname, lastname));
       }
     } catch (error) {
-      dispatch(actions.rejected(error));
+      dispatch(actions.rejected(error.message));
     }
   };
 }
