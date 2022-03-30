@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { postProfile } from '../fetch';
-import { promiseStatus } from "../utils/selectors/selectors";
+import { postProfile } from '../fetch/fetch';
+import { promiseStatus } from "../selectors/selectors";
 import { userData } from "./UserReducer";
 
 const initialState = {

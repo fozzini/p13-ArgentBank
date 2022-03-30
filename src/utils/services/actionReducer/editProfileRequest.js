@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import putProfile from '../fetch';
-import { modifiedUser } from "./UserReducer";
-import { promiseStatus } from "../utils/selectors/selectors";
+import { putProfile } from '../fetch/fetch';
+import { userEdition } from "./UserReducer";
+import { promiseStatus } from "../selectors/selectors";
 
 const initialState = {
   status: "void",
@@ -14,7 +14,7 @@ const {actions, reducer} = createSlice({
   initialState,
   reducers : {
     fetch : {
-      reducer : (draft) => {
+      reducer : (draft, action) => {
         if (draft.status === "void") {
           draft.status = "pending";
           return;
@@ -73,7 +73,7 @@ export const editProfile = (body) => {
         throw new Error(data.message);
       } else {
         dispatch(actions.resolved(data));
-        dispatch(modifiedUser(data.body))
+        dispatch(userEdition(data.body))
       }
     } catch (error) {
       dispatch(actions.rejected(error));

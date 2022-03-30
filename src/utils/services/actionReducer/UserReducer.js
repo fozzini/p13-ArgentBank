@@ -23,7 +23,7 @@ const { actions, reducer } = createSlice({
         return initialState;
       },
     },
-    UserData: {
+    userData: {
       prepare: (firstname, lastname) => ({ payload: { firstname, lastname } }),
       reducer: (draft, action) => {
         draft.firstname = action.payload.firstname;
@@ -54,6 +54,6 @@ const { actions, reducer } = createSlice({
   },
 });
 
-export const { login, logout, UserData, edit, userEdition } = actions;
+export const { login, logout, userData, edit, userEdition } = actions;
 
 export default reducer;
