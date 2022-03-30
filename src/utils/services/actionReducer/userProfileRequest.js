@@ -57,8 +57,8 @@ const { actions, reducer } = createSlice({
 });
 
 
-export function accessProfile() {
-  return async (dispatch, getState) => {
+export const accessProfile = () => 
+  async (dispatch, getState) => {
     const status = promiseStatus(getState(), "profile");
     const token = getState().user.token;
 
@@ -82,6 +82,6 @@ export function accessProfile() {
       dispatch(actions.rejected(error.message));
     }
   };
-}
+
 
 export default reducer;
