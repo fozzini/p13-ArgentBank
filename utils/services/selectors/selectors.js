@@ -1,3 +1,3 @@
-export const selectUserInfos = (type) => (state) => state.user[type];
-export const isEditingName = (state) => state.editName;
-export const selectorStatus = (state, type) => state[type].status;
+export const stateUser = (type) => (state) => state.user[type];
+export const editStatus = (state) => state.editName;
+export const promiseStatus = (state, type) => state[type].status;

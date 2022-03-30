@@ -1,15 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import putProfile from '../fetch';
 import { modifiedUser } from "./UserReducer";
-import { selectorStatus } from "../utils/selectors/selectors";
-
-const putRequest = async (url, body, token) => {
-  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  return axios
-    .put(url, body)
-    .then((response) => response.data)
-    .catch((error) => error);
-}
+import { promiseStatus } from "../utils/selectors/selectors";
 
 const initialState = {
   status: "void",
@@ -64,16 +56,19 @@ const {actions, reducer} = createSlice({
 })
 
 
-export const modifyUserData = (body) => {
+export const editProfile = (body) => {
   return async (dispatch, getState) => {
-    const status = selectorStatus(getState(), "modify");
+    const status = promiseStatus(getState(), "modify");
     const token = getState().user.token;
+
     if (status === "pending" || status === "updating") {
       return;
     }
+
     dispatch(actions.fetch());
+
     try {
-      const data = await putRequest("/user/profile",body, token);
+      const data = await putProfile("/user/profile",body, token);
       if (data.status !== 200) {
         throw new Error(data.message);
       } else {

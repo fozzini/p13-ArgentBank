@@ -1,13 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { selectorStatus } from "../utils/selectors/selectors";
+import {postLogin} from "../fetch/fetch"
+import { promiseStatus } from "../utils/selectors/selectors";
 import {login} from "../features/user";
 
-const postRequestLogin = async  (url, body) => 
-  axios
-    .post(url, body)
-    .then((response) => response.data)
-    .catch((error) => error);
 
 const initialState = {
   status: "void",
@@ -61,21 +56,27 @@ const { actions, reducer } = createSlice({
 }
 });
 
-export const sendLogin = () => 
+export const requestLogin = () => 
   async (dispatch, getState) => {
-    const status = selectorStatus(getState(), "login");
+    const status = promiseStatus(getState(), "login");
+
     if (status === "pending" || status === "updating") {
       return;
     }
+
     dispatch(actions.fetch());
+
     try {
+
       const email = document.getElementById("username").value;
       const password = document.getElementById("password").value;
       const body = { email: email, password: password };
-      const data = await postRequestLogin("/user/login", body);
+      const data = await postLogin("/user/login", body);
+
       if (data.status !== 200) {
         throw new Error(data.message);
-      } else {
+      } 
+      else {
         dispatch(actions.resolved(data));
         dispatch(login(data.body.token));
       }

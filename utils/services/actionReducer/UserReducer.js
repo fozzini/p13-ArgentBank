@@ -31,13 +31,13 @@ const { actions, reducer } = createSlice({
         return;
       }
     },
-    toggleEdit: {
+    edit: {
       reducer: (draft) => {
         draft.editName = !draft.editName;
         return;
       },
     },
-    modifiedUser: {
+    userEdition: {
       prepare: (body) => ({
         payload: { firstName: body.firstName, lastName: body.lastName },
       }),
@@ -54,6 +54,6 @@ const { actions, reducer } = createSlice({
   },
 });
 
-export const { login, logout, UserData, toggleEdit, modifiedUser } = actions;
+export const { login, logout, UserData, edit, userEdition } = actions;
 
 export default reducer;
