@@ -9,7 +9,6 @@ const initialState = {
   error: null,
 };
 
-
 const { actions, reducer } = createSlice({
   name: "profile",
   initialState,
