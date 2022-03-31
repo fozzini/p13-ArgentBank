@@ -22,7 +22,6 @@ const Button = () => {
   useEffect(() => {if(status === "resolved") { 
     navigate("/user") }},[navigate, status])
   
-  
   return (
     <div>
       <button onClick={loginSubmit} type="submit" className="sign-in-button">Sign In</button>
