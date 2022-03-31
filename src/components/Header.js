@@ -1,12 +1,21 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { userSelector } from "../utils/services/selectors/selectors"
+import { useDispatch, useSelector } from 'react-redux';
+import ProfileEditor from './ProfileEditor';
+import { edit } from "../utils/services/actionReducer/UserReducer";
 const Header = () => {
-  const {firstname, lastname} = useSelector(state => state.user);
-  return (
+  const dispatch = useDispatch()
+  const {firstname, lastname, editName} = useSelector(state => state.user);
+  
+  const editMode = () => {
+    dispatch(edit())
+  }
+  
+  return editName ? (
+    <ProfileEditor firstname={firstname} lastname={lastname}/>
+  ) : (
     <div className="header">
       <h1>Welcome back<br />{firstname} {lastname}!</h1>
-      <button className="edit-button">Edit Name</button>
+      <button onClick={editMode} className="edit-button">Edit Name</button>
     </div>
   );
 };

@@ -9,6 +9,7 @@ const NavSignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {firstname} = useSelector(state => state.user);
+  
   const dispatchLogout = () => {
     dispatch(userLogout());
     dispatch(logout());

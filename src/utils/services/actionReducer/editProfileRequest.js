@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { putProfile } from '../fetch/fetch';
 import { userEdition } from "./UserReducer";
-import { promiseStatus } from "../selectors/selectors";
 
 const initialState = {
   status: "void",
@@ -55,15 +54,9 @@ const {actions, reducer} = createSlice({
   }
 })
 
-
 export const editProfile = (body) => {
   return async (dispatch, getState) => {
-    const status = promiseStatus(getState(), "modify");
     const token = getState().user.token;
-
-    if (status === "pending" || status === "updating") {
-      return;
-    }
 
     dispatch(actions.fetch());
 

@@ -8,7 +8,7 @@ export const store = configureStore({
   reducer: {
     login: login,
     profile: profile,
-    edition: edition,
-    user: user
+    user: user,
+    edition: edition
   },
 });
