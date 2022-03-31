@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { requestLogin } from '../utils/services/actionReducer/loginRequest';
-import { accessProfile } from '../utils/services/actionReducer/userProfileRequest';
-import { store } from '../utils/services/store/store';
-
 
 const Button = () => {
+  
   const [errorMessage, setErrorMessage] = React.useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {status} = useSelector((state) => state.login)
   
   const loginSubmit = async (e) =>{
     e.preventDefault();
     const login = async () => dispatch(requestLogin());
     await login();
-    const profile = async () => dispatch(accessProfile());
-    await profile();
-    const status = store.getState().login.status;
-    if(status === "rejected") { setErrorMessage("Incorrect password or login !")}
-    if(status === "resolved") { navigate("/user") }
   }
+
+  useEffect(() => {if(status === "rejected") { 
+    setErrorMessage("Incorrect password or login !")}},[status])
+
+  useEffect(() => {if(status === "resolved") { 
+    navigate("/user") }},[navigate, status])
+  
   
   return (
     <div>

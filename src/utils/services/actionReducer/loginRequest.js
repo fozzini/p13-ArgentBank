@@ -14,6 +14,11 @@ const { actions, reducer } = createSlice({
   name: "login",
   initialState,
   reducers: {
+    logout: {
+      reducer: () => {
+        return initialState;
+      },
+    },
     fetch: {
       reducer : (draft) => {
       if (draft.status === "void") {
@@ -85,4 +90,5 @@ export const requestLogin = () =>
     }
   };
 
+  export const { logout } = actions;
 export default reducer;

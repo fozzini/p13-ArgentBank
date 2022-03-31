@@ -18,7 +18,7 @@ const { actions, reducer } = createSlice({
         return;
       },
     },
-    logout: {
+    userLogout: {
       reducer: () => {
         return initialState;
       },
@@ -54,6 +54,6 @@ const { actions, reducer } = createSlice({
   },
 });
 
-export const { login, logout, userData, edit, userEdition } = actions;
+export const { login, userLogout, userData, edit, userEdition } = actions;
 
 export default reducer;

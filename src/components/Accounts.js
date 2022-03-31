@@ -1,8 +1,10 @@
 import React from 'react';
 
 const Accounts = () => {
+  
   return (
-    <><h2 className="sr-only">Accounts</h2><section className="account">
+    <><h2 className="sr-only">Accounts</h2>
+    <section className="account">
       <div className="account-content-wrapper">
         <h3 className="account-title">Argent Bank Checking (x8349)</h3>
         <p className="account-amount">$2,082.79</p>

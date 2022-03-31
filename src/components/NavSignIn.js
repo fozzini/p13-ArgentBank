@@ -1,7 +1,20 @@
 import React from 'react';
 import argentBankLogo from '../assets/argentBankLogo.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { userLogout } from "../utils/services/actionReducer/UserReducer"
+import { logout } from "../utils/services/actionReducer/loginRequest"
+
 const NavSignIn = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const {firstname} = useSelector(state => state.user);
+  const dispatchLogout = () => {
+    dispatch(userLogout());
+    dispatch(logout());
+    navigate("/");
+  }
+
   return (
     <nav className="main-nav">
       <Link to={`/`} className="main-nav-logo">
@@ -15,12 +28,12 @@ const NavSignIn = () => {
       <div>
         <Link to={'/User'} className="main-nav-item" >
           <i className="fa fa-user-circle"></i>
-          Tony
+          {firstname}
         </Link>
-        <Link to={`/`} className="main-nav-item" >
+        <div onClick={dispatchLogout} className="main-nav-item" >
           <i className="fa fa-sign-out"></i>
           Sign Out
-        </Link>
+        </div>
       </div>
     </nav>
   );
