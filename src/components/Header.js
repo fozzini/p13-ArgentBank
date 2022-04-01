@@ -14,7 +14,7 @@ const Header = () => {
     <ProfileEditor firstname={firstname} lastname={lastname}/>
   ) : (
     <div className="header">
-      <h1>Welcome back<br />{firstname} {lastname}!</h1>
+      <h1 className="title">Welcome back<br />{firstname} {lastname}!</h1>
       <button onClick={editMode} className="edit-button">Edit Name</button>
     </div>
   );

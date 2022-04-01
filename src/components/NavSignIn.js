@@ -26,7 +26,7 @@ const NavSignIn = () => {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
-      <div>
+      <div className="main-nav-item-container">
         <Link to={'/User'} className="main-nav-item" >
           <i className="fa fa-user-circle"></i>
           {firstname}
