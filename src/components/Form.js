@@ -1,26 +1,27 @@
 import React from 'react';
+import Button from './Button';
 
 const Form = () => {
+
   return (
     <div className="main bg-dark">
       <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
-        <form>
+        <form >
           <div className="input-wrapper">
-            <label for="username">Username</label
-            ><input type="text" id="username" />
+            <label htmlFor="username">Username</label>
+            <input type="text" id="username" autoComplete='e-mail' />
           </div>
           <div className="input-wrapper">
-            <label for="password">Password</label
-            ><input type="password" id="password" />
+            <label htmlFor="password">Password</label>
+            <input type="password" autoComplete='current-password' id="password" />
           </div>
           <div className="input-remember">
-            <input type="checkbox" id="remember-me" /><label for="remember-me"
-              >Remember me</label
-            >
+            <input type="checkbox" id="remember-me" />
+            <label htmlFor="remember-me">Remember me</label>
           </div>
-          <button className="sign-in-button">Sign In</button>
+          <Button/>
         </form>
       </section>
     </div>
