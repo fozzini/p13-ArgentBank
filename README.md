@@ -75,6 +75,8 @@ And for the API model that you will be proposing for transactitons, the wirefram
 
 ## 2-Front-End
 
+fork this repo
+
 install
 ### `npm i`
 
