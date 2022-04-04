@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import argentBankLogo from '../assets/argentBankLogo.png'
+
+/**
+* create sign out nav
+*
+* @return html - sign out nav
+*/
 const NavSignOut = () => {
   return (
     <nav className="main-nav">

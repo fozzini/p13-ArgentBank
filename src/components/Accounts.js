@@ -1,4 +1,7 @@
 import React from 'react';
+/**
+* Create Html Accounts page
+*/
 
 const Accounts = () => {
   

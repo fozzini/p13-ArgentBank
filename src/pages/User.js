@@ -10,6 +10,16 @@ import { userLogout } from '../utils/services/actionReducer/UserReducer';
 import { logout } from '../utils/services/actionReducer/loginRequest';
 import HeaderPanel from '../components/HeaderPanel';
 
+/**
+* create user page html
+*
+* @param Hooks - 
+* @return  redirection, reducer function, the state .
+* @param loadprofile dispatchLogout
+* @return user profile, disconnect if rejected or token missing
+* @return html - user page
+*/
+
 const User = () => {
   
   const navigate = useNavigate();

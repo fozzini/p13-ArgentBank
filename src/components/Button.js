@@ -3,6 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { requestLogin } from '../utils/services/actionReducer/loginRequest';
 
+/**
+* create Login Button
+*
+* @param Hooks - 
+* @return  error message, redirection, reducer function, get the state .
+* @param LoginSubmit - 
+* @return user login 
+* @return html - button
+*/
 const Button = () => {
   
   const [errorMessage, setErrorMessage] = React.useState("");

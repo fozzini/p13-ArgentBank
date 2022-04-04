@@ -5,6 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userLogout } from "../utils/services/actionReducer/UserReducer"
 import { logout } from "../utils/services/actionReducer/loginRequest"
 
+/**
+* create Sign in nav
+*
+* @param Hooks - 
+* @return  redirection, reducer function, the state .
+* @param dispatchLogout - 
+* @return user log out 
+* @return html - sign in nav
+*/
 const NavSignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();

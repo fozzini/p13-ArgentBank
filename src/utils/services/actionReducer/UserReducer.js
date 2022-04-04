@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+/**
+* The "main" reducer
+*
+* @return state
+*/
+
 const initialState = {
   token: "",
   firstname: "",
@@ -15,7 +21,6 @@ const { actions, reducer } = createSlice({
       prepare: (token) => ({ payload: { token } }),
       reducer: (draft, action) => {
         draft.token = action.payload.token;
-        return;
       },
     },
     userLogout: {
@@ -28,13 +33,11 @@ const { actions, reducer } = createSlice({
       reducer: (draft, action) => {
         draft.firstname = action.payload.firstname;
         draft.lastname = action.payload.lastname;
-        return;
       }
     },
     edit: {
       reducer: (draft) => {
         draft.editName = !draft.editName;
-        return;
       },
     },
     userEdition: {
@@ -46,9 +49,7 @@ const { actions, reducer } = createSlice({
           draft.firstname = action.payload.firstName;
           draft.lastname = action.payload.lastName;
           draft.editName = false;
-          return;
         }
-        return;
       },
     },
   },

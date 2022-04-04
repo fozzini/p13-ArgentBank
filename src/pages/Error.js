@@ -2,6 +2,11 @@ import React from 'react';
 import Footer from '../components/Footer';
 import NavSignOut from '../components/NavSignOut';
 
+/**
+* create error page
+*
+* @return html - error page
+*/
 const Error = () => {
   return (
     <div>
