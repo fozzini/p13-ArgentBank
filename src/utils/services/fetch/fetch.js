@@ -1,5 +1,12 @@
-
 import axios from "axios";
+
+/**
+* fetch datas
+*
+* @param promise with axios post and put - 
+* @return get and put data from and to api server
+* @return datas and responses
+*/
 export const postLogin = async  (url, body) => 
   axios
     .post(url, body)

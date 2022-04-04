@@ -2,6 +2,13 @@ import React from 'react';
 import iconChat from '../assets/iconChat.png';
 import iconMoney from "../assets/iconMoney.png"
 import iconSecurity from "../assets/iconSecurity.png"
+
+/**
+* create features at home page
+*
+* @return html - features
+*/
+
 const Features = () => {
   return (
     <section className="features">

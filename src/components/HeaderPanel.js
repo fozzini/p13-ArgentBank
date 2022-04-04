@@ -1,5 +1,9 @@
 import React from 'react';
-
+/**
+* create nav header panel
+*
+* @return html - Header panel
+*/
 const HeaderPanel = () => {
   return (
     <div className="headerPanel">

@@ -2,6 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 import { postProfile } from '../fetch/fetch';
 import { userData } from "./UserReducer";
 
+
+/**
+* request profile
+*
+* @param Hooks - 
+* @return reducer function, the state .
+* @param accessProfile - 
+* @return check fetching status, order fetching and send action to reducer
+* @return state
+*/
+
 const initialState = {
   status: "void",
   data: null,

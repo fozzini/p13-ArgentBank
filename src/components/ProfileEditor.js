@@ -3,6 +3,17 @@ import { useDispatch } from 'react-redux';
 import { editProfile } from '../utils/services/actionReducer/editProfileRequest';
 import { edit } from '../utils/services/actionReducer/UserReducer';
 
+/**
+* create editor mode
+*
+* @param Hooks - 
+* @return  redirection, reducer function.
+* @param save and cancel
+* @return user log out 
+* @return html - editor mode
+* @return save and cancel function
+*/
+
 const ProfileEditor = ({ firstname, lastname }) => {
   const dispatch = useDispatch()
 

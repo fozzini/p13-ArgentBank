@@ -2,6 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 import { postLogin } from "../fetch/fetch"
 import { login } from "./UserReducer"
 
+/**
+* request login
+*
+* @param Hooks - 
+* @return reducer function, the state .
+* @param requestLogin - 
+* @return check fetching status, order fetching and send action to reducer
+* @return state
+*/
+
 const initialState = {
   status: "void",
   data: null,
