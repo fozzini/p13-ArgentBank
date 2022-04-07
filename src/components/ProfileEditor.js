@@ -16,12 +16,11 @@ import { edit } from '../utils/services/actionReducer/UserReducer';
 
 const ProfileEditor = ({ firstname, lastname }) => {
   const dispatch = useDispatch()
+  const [firstName, setFirstName] = React.useState(firstname);
+  const [lastName, setLastName] = React.useState(lastname);
 
   const save = () =>{
-    const modifiedFirstName = document.getElementById("firstnameInput").value;
-    const modifiedLastName = document.getElementById("lastnameInput").value;
-    const body = { firstName: modifiedFirstName, lastName: modifiedLastName };
-    dispatch(editProfile(body));
+    dispatch(editProfile({ firstName: firstName, lastName: lastName }));
   }
   const cancel = () => {
     dispatch(edit())
@@ -31,12 +30,24 @@ const ProfileEditor = ({ firstname, lastname }) => {
       <h1 className="modifiedTitle" >Welcome back<br /></h1>
       <div className="containerEditForm">
         <div className="editForm flex-end">
-          <input className="field" type="text" id="firstnameInput" name="firstname" defaultValue={firstname}/>
-          <button onClick={save} className="validate">Save</button>
+          <input className="field"
+                 type="text" 
+                 id="firstnameInput" 
+                 name="firstname" 
+                 defaultValue={firstname} 
+                 onChange={e => setFirstName(e.target.value)}/>
+          <button onClick={save} 
+                  className="validate">Save</button>
         </div>
         <div className="editForm flex-start">  
-          <input className="field" type="text" id="lastnameInput" name="lastname" defaultValue={lastname}/>
-          <button onClick={cancel} className="validate">Cancel</button>
+          <input className="field" 
+                 type="text"  
+                 id="lastnameInput" 
+                 name="lastname" 
+                 defaultValue={lastname} 
+                 onChange={e => setLastName(e.target.value)}/>
+          <button onClick={cancel} 
+                  className="validate">Cancel</button>
         </div>
       </div>
     </div>

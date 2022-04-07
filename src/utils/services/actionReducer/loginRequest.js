@@ -61,13 +61,10 @@ const { actions, reducer } = createSlice({
   }
 })
 
-export const requestLogin = () => 
+export const requestLogin = (email, password) => 
   async (dispatch) => {
     dispatch(actions.fetch());
     try {
-      
-      const email = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
       const body = { email: email, password: password };
       const data = await postLogin("/user/login", body);
 
