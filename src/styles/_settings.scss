@@ -80,6 +80,14 @@ body {
 .main-nav-item-container{
   display: flex;
   align-items: center;
+  text-decoration :none;
+  cursor: pointer;
+}
+.main-nav-item-container a{
+  display: flex;
+  align-items: center;
+  text-decoration :none;
+  cursor: pointer;
 }
 .main-nav-logo {
   display: flex;
